@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details - GameVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">GameVault</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="upload.html">Upload</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="game-detail-page">
+        <div class="game-hero" id="gameHero">
+            <div class="game-hero-bg" id="gameHeroBg"></div>
+            <div class="container">
+                <div class="game-hero-content">
+                    <div class="game-preview-3d" id="gamePreview3d">
+                        <!-- 3D preview container -->
+                    </div>
+                    <div class="game-info-main">
+                        <div class="game-badges">
+                            <span class="badge badge-category">Action</span>
+                            <span class="badge badge-platform">Windows</span>
+                        </div>
+                        <h1 class="game-title" id="gameTitle">Cyber Odyssey 2077</h1>
+                        <div class="game-meta">
+                            <div class="rating-stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star half">★</span>
+                                <span class="rating-value">4.5</span>
+                            </div>
+                            <span class="downloads">⬇ 50.2K downloads</span>
+                            <span class="author">by <a href="#">NeoStudio</a></span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="btn btn-glow btn-large" id="downloadBtn">
+                                <span>⬇ Download Now</span>
+                            </button>
+                            <button class="btn btn-outline btn-large" id="playBtn">
+                                <span>▶ Play Online</span>
+                            </button>
+                            <button class="btn btn-icon" id="likeBtn">
+                                <span>♥</span>
+                                <span class="count">2.4K</span>
+                            </button>
+                            <button class="btn btn-icon" id="shareBtn">
+                                <span>↗</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="game-content">
+                <div class="game-main">
+                    <section class="screenshots-section">
+                        <h2>Screenshots</h2>
+                        <div class="screenshots-gallery" id="screenshotsGallery">
+                            <div class="screenshot-main">
+                                <img src="https://via.placeholder.com/800x450/1a1a2e/00d4ff?text=Screenshot+1" alt="Screenshot 1">
+                            </div>
+                            <div class="screenshot-thumbnails">
+                                <img src="https://via.placeholder.com/200x112/1a1a2e/00d4ff?text=1" class="active" data-index="0">
+                                <img src="https://via.placeholder.com/200x112/16213e/00d4ff?text=2" data-index="1">
+                                <img src="https://via.placeholder.com/200x112/0f3460/00d4ff?text=3" data-index="2">
+                                <img src="https://via.placeholder.com/200x112/533483/00d4ff?text=4" data-index="3">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="description-section">
+                        <h2>About This Game</h2>
+                        <div class="game-description" id="gameDescription">
+                            <p>Embark on an epic cyberpunk adventure in a neon-lit metropolis. Cyber Odyssey 2077 combines intense action, deep storytelling, and stunning visuals in an open-world experience like no other.</p>
+                            <h3>Features:</h3>
+                            <ul>
+                                <li>Immersive open-world environment</li>
+                                <li>Dynamic combat system</li>
+                                <li>Character customization</li>
+                                <li>Multiple story endings</li>
+                                <li>Multiplayer co-op mode</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="reviews-section">
+                        <h2>Reviews</h2>
+                        <div class="review-stats">
+                            <div class="rating-overview">
+                                <div class="rating-big">4.5</div>
+                                <div class="rating-bars">
+                                    <div class="rating-bar">
+                                        <span>5★</span>
+                                        <div class="bar"><div style="width: 70%"></div></div>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4★</span>
+                                        <div class="bar"><div style="width: 20%"></div></div>
+                                        <span>20%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3★</span>
+                                        <div class="bar"><div style="width: 7%"></div></div>
+                                        <span>7%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2★</span>
+                                        <div class="bar"><div style="width: 2%"></div></div>
+                                        <span>2%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1★</span>
+                                        <div class="bar"><div style="width: 1%"></div></div>
+                                        <span>1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list" id="reviewsList">
+                            <!-- Reviews loaded dynamically -->
+                        </div>
+
+                        <div class="add-review">
+                            <h3>Write a Review</h3>
+                            <div class="star-rating-input" id="starRatingInput">
+                                <span class="star" data-rating="1">★</span>
+                                <span class="star" data-rating="2">★</span>
+                                <span class="star" data-rating="3">★</span>
+                                <span class="star" data-rating="4">★</span>
+                                <span class="star" data-rating="5">★</span>
+                            </div>
+                            <textarea class="review-input" id="reviewInput" placeholder="Share your experience..."></textarea>
+                            <button class="btn btn-primary" id="submitReview">Post Review</button>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="game-sidebar">
+                    <div class="sidebar-card glass">
+                        <h3>Game Details</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Version</span>
+                            <span class="detail-value">1.2.0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size</span>
+                            <span class="detail-value">4.2 GB</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Released</span>
+                            <span class="detail-value">Dec 15, 2023</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Updated</span>
+                            <span class="detail-value">Jan 20, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">License</span>
+                            <span class="detail-value">Free to Play</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card glass">
+                        <h3>System Requirements</h3>
+                        <div class="requirements">
+                            <div class="req-section">
+                                <h4>Minimum</h4>
+                                <p>OS: Windows 10 64-bit</p>
+                                <p>Processor: Intel i5-8400</p>
+                                <p>Memory: 8 GB RAM</p>
+                                <p>Graphics: GTX 1060</p>
+                            </div>
+                            <div class="req-section">
+                                <h4>Recommended</h4>
+                                <p>OS: Windows 11 64-bit</p>
+                                <p>Processor: Intel i7-10700</p>
+                                <p>Memory: 16 GB RAM</p>
+                                <p>Graphics: RTX 3060</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card glass">
+                        <h3>Tags</h3>
+                        <div class="tags-cloud">
+                            <span class="tag">Cyberpunk</span>
+                            <span class="tag">Open World</span>
+                            <span class="tag">RPG</span>
+                            <span class="tag">Multiplayer</span>
+                            <span class="tag">Action</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/three-bg.js"></script>
+    <script src="js/game-detail.js"></script>
+</body>
+</html>

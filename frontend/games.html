@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Games - GameVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">GameVault</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html" class="active">Games</a></li>
+                <li><a href="upload.html">Upload</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="games-page">
+        <div class="container">
+            <div class="games-header">
+                <h1 class="page-title gradient-text">Discover Games</h1>
+                
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+                    </div>
+                    
+                    <div class="filter-dropdown">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="puzzle">Puzzle</option>
+                            <option value="racing">Racing</option>
+                            <option value="shooter">Shooter</option>
+                            <option value="strategy">Strategy</option>
+                            <option value="rpg">RPG</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-dropdown">
+                        <select id="sortFilter" class="filter-select">
+                            <option value="newest">Newest First</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rated">Highest Rated</option>
+                            <option value="downloads">Most Downloaded</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="games-grid" id="gamesGrid">
+                <!-- Games loaded dynamically -->
+            </div>
+
+            <div class="pagination" id="pagination">
+                <button class="btn btn-outline" id="prevPage" disabled>← Previous</button>
+                <div class="page-numbers" id="pageNumbers"></div>
+                <button class="btn btn-outline" id="nextPage">Next →</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/three-bg.js"></script>
+    <script src="js/games.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Game - GameVault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">GameVault</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="upload.html" class="active">Upload</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <div class="user-menu" id="userMenu">
+                    <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="upload-page">
+        <div class="container">
+            <div class="upload-header">
+                <h1 class="page-title gradient-text">Upload Your Game</h1>
+                <p class="page-subtitle">Share your creation with the world</p>
+            </div>
+
+            <div class="upload-container">
+                <div class="upload-3d-preview" id="upload3d">
+                    <div class="floating-shapes">
+                        <div class="shape cube"></div>
+                        <div class="shape sphere"></div>
+                        <div class="shape pyramid"></div>
+                    </div>
+                </div>
+
+                <form class="upload-form" id="uploadForm">
+                    <div class="form-section">
+                        <h3>Game Files</h3>
+                        <div class="drop-zone" id="dropZone">
+                            <div class="drop-zone-content">
+                                <div class="upload-icon">📦</div>
+                                <p class="drop-text">Drag & drop your game files here</p>
+                                <p class="drop-subtext">or click to browse</p>
+                                <input type="file" id="gameFile" accept=".zip,.rar,.exe,.dmg,.apk" hidden>
+                            </div>
+                            <div class="upload-progress" id="uploadProgress" hidden>
+                                <div class="progress-ring">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                                        <circle class="progress-bar" cx="50" cy="50" r="45" id="progressCircle"/>
+                                    </svg>
+                                    <span class="progress-text" id="progressText">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="file-info" id="fileInfo" hidden>
+                            <span class="file-name"></span>
+                            <span class="file-size"></span>
+                            <button type="button" class="remove-file" id="removeFile">×</button>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Game Details</h3>
+                        <div class="form-group">
+                            <label for="gameTitle">Game Title *</label>
+                            <input type="text" id="gameTitle" class="form-input" placeholder="Enter game title" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gameCategory">Category *</label>
+                                <select id="gameCategory" class="form-input" required>
+                                    <option value="">Select category</option>
+                                    <option value="action">Action</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="puzzle">Puzzle</option>
+                                    <option value="racing">Racing</option>
+                                    <option value="shooter">Shooter</option>
+                                    <option value="strategy">Strategy</option>
+                                    <option value="rpg">RPG</option>
+                                    <option value="simulation">Simulation</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gamePlatform">Platform *</label>
+                                <select id="gamePlatform" class="form-input" required>
+                                    <option value="">Select platform</option>
+                                    <option value="windows">Windows</option>
+                                    <option value="mac">Mac</option>
+                                    <option value="linux">Linux</option>
+                                    <option value="android">Android</option>
+                                    <option value="ios">iOS</option>
+                                    <option value="web">Web</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gameDescription">Description *</label>
+                            <textarea id="gameDescription" class="form-input" rows="4" placeholder="Describe your game..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <div class="tags-input" id="tagsInput">
+                                <input type="text" id="tagInput" placeholder="Add tags (press Enter)">
+                            </div>
+                            <div class="tags-list" id="tagsList"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Media</h3>
+                        <div class="thumbnail-upload" id="thumbnailUpload">
+                            <div class="thumbnail-preview" id="thumbnailPreview">
+                                <span class="thumbnail-placeholder">🖼️</span>
+                                <p>Upload thumbnail</p>
+                            </div>
+                            <input type="file" id="thumbnailFile" accept="image/*" hidden>
+                        </div>
+                        <div class="screenshots-upload">
+                            <label>Screenshots (up to 5)</label>
+                            <div class="screenshots-grid" id="screenshotsGrid">
+                                <div class="screenshot-slot" data-index="0">
+                                    <span>+</span>
+                                </div>
+                            </div>
+                            <input type="file" id="screenshotsFile" accept="image/*" multiple hidden>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="history.back()">Cancel</button>
+                        <button type="submit" class="btn btn-glow btn-large" id="submitBtn">
+                            <span>Publish Game</span>
+                            <div class="btn-loader" hidden></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script src="js/three-bg.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html>

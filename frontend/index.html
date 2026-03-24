@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVault - Upload & Discover Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">GameVault</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="upload.html">Upload</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Upload. Play.</span>
+                <br>
+                <span class="neon-text">Discover.</span>
+            </h1>
+            <p class="hero-subtitle">
+                The ultimate platform for indie game developers to showcase their creations. 
+                Join thousands of creators and millions of players worldwide.
+            </p>
+            <div class="hero-buttons">
+                <a href="upload.html" class="btn btn-glow btn-large">
+                    <span>Upload Your Game</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </a>
+                <a href="games.html" class="btn btn-outline btn-large">
+                    Explore Games
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50000">0</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="1200000">0</span>
+                    <span class="stat-label">Players</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="15000">0</span>
+                    <span class="stat-label">Creators</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-3d-container" id="hero3d"></div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Games</h2>
+                <a href="games.html" class="view-all">View All →</a>
+            </div>
+            <div class="games-grid" id="featuredGames">
+                <!-- Games loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="trending-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title neon-text">Trending Now</h2>
+            </div>
+            <div class="trending-carousel" id="trendingCarousel">
+                <!-- Trending games loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">⚔️</div>
+                    <h3>Action</h3>
+                    <span class="category-count">12,450 games</span>
+                </div>
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">🧩</div>
+                    <h3>Puzzle</h3>
+                    <span class="category-count">8,320 games</span>
+                </div>
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">🏎️</div>
+                    <h3>Racing</h3>
+                    <span class="category-count">5,180 games</span>
+                </div>
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">🎯</div>
+                    <h3>Shooter</h3>
+                    <span class="category-count">9,670 games</span>
+                </div>
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">🏰</div>
+                    <h3>Strategy</h3>
+                    <span class="category-count">6,940 games</span>
+                </div>
+                <div class="category-card" data-tilt>
+                    <div class="category-icon">🎭</div>
+                    <h3>RPG</h3>
+                    <span class="category-count">7,230 games</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer glass">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🎮</span>
+                    <span class="logo-text">GameVault</span>
+                    <p>The future of indie gaming</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <a href="#">Guidelines</a>
+                        <a href="#">Support</a>
+                        <a href="#">Developers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GameVault. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/three-bg.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
